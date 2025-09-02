@@ -1,0 +1,44 @@
+name: GetTor
+
+on:
+  workflow_dispatch:
+  
+  
+permissions:
+  contents: write
+
+jobs:
+
+  gettor:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v5
+    - name: Download release data
+      run: |
+        curl https://aus1.torproject.org/torbrowser/update_3/release/downloads.json -o downloads.json
+    - name: Extract download URLs
+      run: |
+        jq -r '.. | .binary? // empty' downloads.json > url.txt
+    - name: Extract Tor version and export to environment
+      run: |
+        version=$(jq -r '.version' downloads.json}
+        echo "TOR_VERSION=$version" >> $GITHUB_ENV
+    - name: Fetch tor
+      run: |
+        wget -qi $GITHUB_WORKSPACE/url.txt
+    - name: Push to release
+      uses: softprops/action-gh-release@v2
+      with:
+          tag_name: ${{ env.TOR_VERSION }}
+          name: ${{ env.TOR_VERSION }}
+          files: |
+            tor-*.apk
+            tor-*.exe
+            tor-*.dmg
+            tor-*.tar.xz
+          preserve_order: true
+          make_latest: true
+env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
