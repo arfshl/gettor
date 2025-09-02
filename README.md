@@ -1,4 +1,4 @@
-Unofficial Tor Browser distribution at GitHub
+Unofficial Tor Browser redistribution at GitHub
 
 Updated every 1 hour
 
