@@ -23,7 +23,7 @@ jobs:
         jq -r '.. | .binary? // empty' downloads.json > url.txt
     - name: Extract Tor version and export to environment
       run: |
-        version=$(jq -r '.version' downloads.json}
+        version=$(jq -r '.version' downloads.json)
         echo "TOR_VERSION=$version" >> $GITHUB_ENV
     - name: Fetch tor
       run: |
