@@ -18,9 +18,22 @@ jobs:
     - name: Download release data
       run: |
         curl https://aus1.torproject.org/torbrowser/update_3/release/downloads.json -o downloads.json
+        curl https://aus1.torproject.org/torbrowser/update_3/release/download-android-aarch64.json -o download-android-aarch64.json
+        curl https://aus1.torproject.org/torbrowser/update_3/release/download-android-armv7.json -o download-android-armv7.json
+        curl https://aus1.torproject.org/torbrowser/update_3/release/download-android-x86.json -o download-android-x86.json
+        curl https://aus1.torproject.org/torbrowser/update_3/release/download-android-x86_64.json -o download-android-x86_64.json
     - name: Extract download URLs
       run: |
         jq -r '.. | .binary? // empty' downloads.json > url.txt
+        jq -r '.. | .binary? // empty' download-android-aarch64.json > url.txt
+        jq -r '.. | .binary? // empty' download-android-armv7.json > url.txt
+        jq -r '.. | .binary? // empty' download-android-x86.json > url.txt
+        jq -r '.. | .binary? // empty' download-android-x86_64.json > url.txt
+        jq -r '.. | .sig? // empty' downloads.json > url.txt
+        jq -r '.. | .sig? // empty' download-android-aarch64.json > url.txt
+        jq -r '.. | .sig? // empty' download-android-armv7.json > url.txt
+        jq -r '.. | .sig? // empty' download-android-x86.json > url.txt
+        jq -r '.. | .sig? // empty' download-android-x86_64.json > url.txt
     - name: Extract Tor version and export to environment
       run: |
         version=$(jq -r '.version' downloads.json)
@@ -38,6 +51,7 @@ jobs:
             tor-*.exe
             tor-*.dmg
             tor-*.tar.xz
+            tor-*.asc
           preserve_order: true
           make_latest: true
 env:
