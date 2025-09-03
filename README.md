@@ -1,5 +1,8 @@
-Unofficial Tor Browser redistribution at GitHub
+Unofficial Tor Browser redistribution at GitHub, updated every 1 hour and easy to replicate
 
-Updated every 1 hour
+How to replicate:
+- Generate your own repository using template
+- Run GetTor workflow
+- Profit!
 
 This project is not affiliated with The Tor Project
