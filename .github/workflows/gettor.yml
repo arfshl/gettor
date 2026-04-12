@@ -43,6 +43,16 @@ jobs:
     - name: Fetch tor
       run: |
         wget -qi $GITHUB_WORKSPACE/url.txt
+        wget -qi https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-windows-i686-${{ env.TOR_VERSION }}.tar.gz
+        wget -qi https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-windows-x86_64-${{ env.TOR_VERSION }}.tar.gz
+        wget -qi https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-macos-x86_64-${{ env.TOR_VERSION }}.tar.gz
+        wget -qi https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-macos-aarch64-${{ env.TOR_VERSION }}.tar.gz
+        wget -qi https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-linux-i686-${{ env.TOR_VERSION }}.tar.gz
+        wget -qi https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-linux-x86_64-${{ env.TOR_VERSION }}.tar.gz
+        wget -qi https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-android-x86-${{ env.TOR_VERSION }}.tar.gz
+        wget -qi https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-android-x86_64-${{ env.TOR_VERSION }}.tar.gz
+        wget -qi https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-android-armv7-${{ env.TOR_VERSION }}.tar.gz
+        wget -qi https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-android-aarch64-${{ env.TOR_VERSION }}.tar.gz
     - name: Push to release
       uses: softprops/action-gh-release@v2
       with:
@@ -54,6 +64,7 @@ jobs:
             tor-*.dmg
             tor-*.tar.xz
             tor-*.asc
+            tor-*.tar.gz
           preserve_order: true
           make_latest: true
 env:
