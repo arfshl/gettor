@@ -53,6 +53,16 @@ jobs:
         wget -q https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-android-x86_64-${{ env.TOR_VERSION }}.tar.gz
         wget -q https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-android-armv7-${{ env.TOR_VERSION }}.tar.gz
         wget -q https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-android-aarch64-${{ env.TOR_VERSION }}.tar.gz
+        wget -q https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-windows-i686-${{ env.TOR_VERSION }}.tar.gz.asc
+        wget -q https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-windows-x86_64-${{ env.TOR_VERSION }}.tar.gz.asc
+        wget -q https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-macos-x86_64-${{ env.TOR_VERSION }}.tar.gz.asc
+        wget -q https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-macos-aarch64-${{ env.TOR_VERSION }}.tar.gz.asc
+        wget -q https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-linux-i686-${{ env.TOR_VERSION }}.tar.gz.asc
+        wget -q https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-linux-x86_64-${{ env.TOR_VERSION }}.tar.gz.asc
+        wget -q https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-android-x86-${{ env.TOR_VERSION }}.tar.gz.asc
+        wget -q https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-android-x86_64-${{ env.TOR_VERSION }}.tar.gz.asc
+        wget -q https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-android-armv7-${{ env.TOR_VERSION }}.tar.gz.asc
+        wget -q https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-android-aarch64-${{ env.TOR_VERSION }}.tar.gz.asc
     - name: Push to release
       uses: softprops/action-gh-release@v2
       with:
@@ -63,8 +73,8 @@ jobs:
             tor-*.exe
             tor-*.dmg
             tor-*.tar.xz
-            tor-*.asc
             tor-*.tar.gz
+            tor-*.asc
           preserve_order: true
           make_latest: true
 env:
