@@ -1,4 +1,4 @@
-Unofficial Tor Browser redistribution at GitHub, updated every 1 hour and easy to replicate
+Unofficial Tor Browser redistribution at GitHub, updated every 6 hour and easy to replicate
 
 How to replicate:
 - Generate your own repository using template
