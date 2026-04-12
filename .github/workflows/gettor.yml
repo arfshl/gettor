@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - name: Download release data
       run: |
         curl https://aus1.torproject.org/torbrowser/update_3/release/downloads.json -o downloads.json
