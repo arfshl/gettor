@@ -64,7 +64,7 @@ jobs:
         wget -q https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-android-armv7-${{ env.TOR_VERSION }}.tar.gz.asc
         wget -q https://archive.torproject.org/tor-package-archive/torbrowser/${{ env.TOR_VERSION }}/tor-expert-bundle-android-aarch64-${{ env.TOR_VERSION }}.tar.gz.asc
     - name: Push to release
-      uses: softprops/action-gh-release@v2
+      uses: softprops/action-gh-release@v3
       with:
           tag_name: ${{ env.TOR_VERSION }}
           name: ${{ env.TOR_VERSION }}
